@@ -6,3 +6,4 @@ export const ShowPassword = require('./Eye.png');
 export const HidePassword = require('./Hide.png');
 export const Email = require('./Message.png');
 export const Password = require('./Password.png');
+export const Logo = require('./Taski.png');

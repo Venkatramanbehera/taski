@@ -1,9 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import CheckBox from '@react-native-community/checkbox';
+import {Link} from '@react-navigation/native';
 
 const Login = () => {
+  const [rememberMeValue, setRememberMeValue] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>
@@ -27,8 +30,32 @@ const Login = () => {
           iconName="password"
         />
       </View>
+      <View style={styles.rememberForgotpasswordContainer}>
+        <View style={styles.rememberMeContainer}>
+          <CheckBox
+            tintColors={{true: '#ff0000'}}
+            disabled={false}
+            value={rememberMeValue}
+            onValueChange={value => {
+              setRememberMeValue(value);
+            }}
+          />
+          <Text>Remember me</Text>
+        </View>
+        <Link to={{screen: 'forgotPassword'}} style={styles.forgotPassword}>
+          <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+        </Link>
+      </View>
       <View style={styles.submitContainer}>
-        <Button name="Submit" />
+        <Button name="Login" />
+      </View>
+      <View style={styles.bottomTextContainer}>
+        <Text style={styles.dhac}>
+          Don't have an account?
+          <Link to={{screen: 'signup'}} style={styles.signupLink}>
+            sign up
+          </Link>
+        </Text>
       </View>
     </View>
   );
@@ -62,6 +89,37 @@ const styles = StyleSheet.create({
   },
   passwordLabel: {},
   submitContainer: {
-    marginTop: 30,
+    marginTop: 50,
+  },
+  rememberForgotpasswordContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    textAlign: 'center',
+    alignItems: 'center',
+    marginVertical: 5,
+    marginRight: 5,
+  },
+  rememberMeContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+  },
+  forgotPassword: {},
+  forgotPasswordText: {},
+  bottomTextContainer: {
+    position: 'absolute',
+    bottom: 10,
+    alignItems: 'center',
+    width: '100%',
+  },
+  dhac: {
+    margin: 10,
+  },
+  signupLink: {
+    color: 'blue',
+    // textDecorationStyle
   },
 });

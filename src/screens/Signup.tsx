@@ -3,7 +3,7 @@ import React from 'react';
 
 const Signup = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Signup</Text>
     </View>
   );
@@ -11,4 +11,8 @@ const Signup = () => {
 
 export default Signup;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
